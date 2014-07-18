@@ -1,0 +1,98 @@
+/* Styling for Logo */
+.header {
+    float: left;
+    height: 40px;
+}
+
+.header .clipadee-logo {
+  padding: 5px 40px 5px 10px;
+}
+
+
+/* Styling for all links in the Navigation class */
+.navigation a {
+	color: #64afe1;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navigation li {
+  	display: inline;
+}
+
+
+/* Styling for Main Image */
+.jumbotron {
+  background-image:url('http://goo.gl/w7Iog3');
+  height: 500px;
+}
+
+.jumbotron .container {
+  position: relative;
+  top: 100px;
+}
+
+.jumbotron h1 {
+ 	color: #fff;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.jumbotron p {
+  color: #fff;
+  font-size: 20px;
+}
+
+
+/* Styling for User/Collection Profiles */
+.collections {
+  background-color: #efefef;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.collections h2 {
+  color: #393c3d;
+  font-size: 24px;
+}
+
+/* Text Over Images */
+.collections h3 {
+  position: absolute;
+  margin-left: 20px;
+  margin-bottom: 50px;  
+  left: 0; 
+  width: 100%;  
+}
+
+/* Text Over Images */
+.collections h3 span { 
+  color: red; 
+  font: bold 20px Helvetica, Sans-Serif; 
+  letter-spacing: -1px;  
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px; 
+}
+
+.collections p {
+  font-size: 15px;
+  margin-bottom: 13px;
+}
+
+
+/* Styling for Additional Panels */
+.learn-more {
+  	background-color: #f7f7f7;   
+}
+
+.learn-more h3 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.learn-more a {
+  color: #00b0ff;
+}

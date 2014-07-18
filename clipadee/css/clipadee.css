@@ -1,0 +1,107 @@
+/* ALL PAGES */
+
+body {
+    background-color: #efefef;
+}
+
+.header {
+    background-color: #64afe1;
+}
+
+/* layout for signed-in user */
+.signedin {
+    background-color: yellow;
+    display: block;
+    width: 100%;
+    line-height: 30px;
+    vertical-align:middle;
+    text-align: right;
+    padding-right: 10%;
+}
+
+.navigation {
+    background-color: #64afe1;
+}
+
+.navigation a {
+    color: #ffffff;
+}
+
+/* SING UP & SING IN PAGES */
+.user .container {
+    position: relative;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    width: 800px;
+    padding: 40px;
+    margin-top: 40px;
+}
+
+.user .container .text {
+    position: relative;
+    width: 400px;
+    float:left;
+}
+
+.user h2 {
+    margin: 0px;
+}
+
+.user form {
+    background-color: #efefef;
+    border: 1px solid #dbdbdb;
+    width: 300px;
+    padding: 20px;
+    float: right;
+}
+
+.user input[type="text"] {
+    width: 260px;
+    margin-bottom: 10px;
+}
+
+.user input[type="password"] {
+    width: 260px;
+    margin-bottom: 10px;
+}
+
+
+.list h2 {
+    margin: 0px;
+    text-align: left;   
+}
+
+
+/* MYCLIPADEE */
+#column {
+    float: left;
+    margin: 0;
+    text-align: center;
+    /* padding-top: 20px; */
+    min-width: 100%;
+    background-color: white;
+
+}
+
+#column h4 {
+    margin: 0px;
+}
+
+
+
+/* dropdown filter attributes */
+#filter {
+    width:150px;
+    margin-top: 10px;
+}
+
+
+
+#clips {
+    text-align: center;
+}
+
+.button {  
+    width: 125px;
+    height: 125px;;
+}
