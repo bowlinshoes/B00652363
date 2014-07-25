@@ -35,7 +35,7 @@
 
             <ul class="nav nav-pills pull-right">
               <li><a href="signin.php">Sign In</a></li>
-              <li><a href="signup.php">Sign Up</a></li>
+              <li><a href="signup.html">Sign Up</a></li>
               <li><a href="include/signout.php">Help</a></li>
             </ul>
           </div>
