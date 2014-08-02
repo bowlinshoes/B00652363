@@ -30,16 +30,16 @@
 
 ?>
 
+
 <form id="ajax-form" class="autosubmit" method="POST" action="./autosave.php">
-  <fieldset>
-    
+
     <br/>
     Title: <br/><input style="width:640px;" name="clip_title" value="<?php echo $row['clip_title'] ?>" /><br/>
     URL: <br/><input style="width:640px;" name="clip_url" value="<?php echo $row['clip_url'] ?>" /><br/>
     ClipNote: <br/><input style="width:640px;" name="clip_note" value="<?php echo $row['clip_note'] ?>" /><br/>
 
     <input id="where" type="hidden" name="clip_id" value="<?php echo $row['clip_id'] ?>" />
-  </fieldset>
+
 </form>
 
 <p id="notice"></p>

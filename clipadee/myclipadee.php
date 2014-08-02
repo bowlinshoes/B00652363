@@ -1,3 +1,7 @@
+<?php
+include("include/connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,88 +9,32 @@
     <title>Clipadee | My Clipadee</title>
     <meta charset="utf-8"/>
     
-    <!-- stylesheets -->
-    <link rel="stylesheet" href="font.css">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css"> 
+    <!-- font stylesheets -->
+    <link rel="stylesheet" href="font.css"><!-- may not use-->
+  
+    <!-- css stylesheets -->
     <!-- <link type="text/css" rel="stylesheet" href="css/bootcamp.css"> -->
-    <link type="text/css" rel="stylesheet" href="css/index.css">
+    <link type="text/css" rel="stylesheet" href="css/bootcamp.css"><!-- code from bootstrap that is used -->
+    <link type="text/css" rel="stylesheet" href="css/index.css"><!-- top navigation bar -->
     <link type="text/css" rel="stylesheet" href="css/clipadee.css">
     <link type="text/css" rel="stylesheet" href="css/backgrounddrain.css">
-    <link type="text/css" rel="stylesheet" href="css/clipstrap.css">
+    <link type="text/css" rel="stylesheet" href="css/css.css">
+    <link type="text/css" rel="stylesheet" href="css/myclipadee.css">
+    <link rel="stylesheet" rel="stylesheet" href="css/style.css"><!-- style for add / delete button -->
+
+    <!-- java scripts -->
+    <script src="js/jquery.js"></script><!-- jQuery JavaScript Library v1.5 -->
+    <script src="js/collection.js"></script><!-- add / delete / edit collection -->
+    <script src="js/filter.js"></script><!-- collection / topic / clip filters -->
+    <script src="js/search.js"></script><!-- search through clips function -->
+    <script src="js/autosave.js"></script><!-- search through clips function -->
+    <script src="js/jquery-ui-1.8.17.custom.min.js"></script><!-- jQuery JavaScript Library v1.5 -->
+    
+    <!-- google hosted jquery library-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     
     <!-- favicon for website -->
     <link rel="icon" type="image/png" href="http://goo.gl/alB2ZQ">
-
-    <!-- google hosted jquery library-->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-
-
-    <!-- functions required for filters -->
-    <script type="text/javascript">
- 
-      //function to filter collection to display topics
-      function getCollectionDetails(str) 
-      {
-        if (str == "") {
-          document.getElementById("collectionDetails").innerHTML = "";
-          return;
-        }
-        if (window.XMLHttpRequest) {
-          xmlHttp = new XMLHttpRequest();
-        }
-          xmlHttp.onreadystatechange = function () {
-          if (xmlHttp.readyState == 4) {
-                  
-            document.getElementById("collectionDetails").innerHTML = xmlHttp.responseText;
-            }
-          }
-            xmlHttp.open("GET", "collectionfilter.php?drdnVal=" + str, true);
-            xmlHttp.send();
-      }
-
-
-      //function to filter collection to display topics
-      function getTopicDetails(str) 
-      {
-        if (str == "") {
-          document.getElementById("topicDetails").innerHTML = "";
-          return;
-        }
-        if (window.XMLHttpRequest) {
-            xmlHttp = new XMLHttpRequest();
-        }
-          xmlHttp.onreadystatechange = function () {
-          if (xmlHttp.readyState == 4) {
-                  
-            document.getElementById("topicDetails").innerHTML = xmlHttp.responseText;
-            }
-          }
-            xmlHttp.open("GET", "topicfilter.php?drdnVal=" + str, true);
-            xmlHttp.send();
-      }
-
-
-      //function to filter clips to display clip details
-      function getClipDetails(str) 
-      {
-        if (str == "") {
-          document.getElementById("clipDetails").innerHTML = "";
-          return;
-        }
-        if (window.XMLHttpRequest) {
-            xmlHttp = new XMLHttpRequest();
-        }
-          xmlHttp.onreadystatechange = function () {
-          if (xmlHttp.readyState == 4) {
-                  
-            document.getElementById("clipDetails").innerHTML = xmlHttp.responseText;
-            }
-          }
-            xmlHttp.open("GET", "clipfilter.php?drdnVal=" + str, true);
-            xmlHttp.send();
-      }
-
-    </script>
 
   </head>
 
@@ -100,131 +48,151 @@
       </div>
     </div>
 
-
     <!-- Navigation: if signed out navigation bar is navin.php else navigation bar is navout.php -->    
     <?php include("include/navigation.php"); ?>
-
 
     <!-- Displays Username if Signed In -->
     <?php include("include/signedin.php"); ?>
 
 
     <!-- Collection -->
-    <div class="row">
+    <div class="col-md-2">
 
-      <!-- Collection -->
-      <div class="col-md-2">
-        <div id="column">
-          <h4>Filter</h4>
-          <form>
-            <select id ="filter" onchange="getCollectionDetails(this.value)" >
-            <option value=""> Select a Collection </option>
+      <h1>Filters</h1>
+      <h3>narrow your search</h3>
 
-            <?php
-              $rightvar = $_SESSION['user_id'];
-              $result = mysql_query("SELECT * FROM collection WHERE id = $rightvar");  
-              //$result= mysql_query("SELECT * FROM collection");
-                        
-              while ($row = mysql_fetch_array($result)) 
-              {
-            ?>
-              <option value="<?php echo $row['collection_id'];?>"><?php echo $row['collection_title'];?></option>
-              <!-- echo "<a href =\"$row[collection_title]\">" . $row['collection_title'] . "</a>"; -->
-            <?php
-              }//close while loop
-            ?>
-            </select>
-          </form>
+      <h4>Collections</h4>
+      <!-- add new collection --> 
+      <a href="javascript:;"><img src="http://goo.gl/gjZA2X" HEIGHT="20px" title="Add Collection" alt="Add Collection" id="add_new"></a>
+      
+      <ul id="filterlist">
+        <table>
 
-          <div id="collectionDetails">
-          </div>
+          <?php
+            $rightvar = $_SESSION['user_id'];
+            $result = mysql_query("SELECT * FROM collection WHERE id = $rightvar");  
+            //$result= mysql_query("SELECT * FROM collection");
+                      
+            while ($row = mysql_fetch_array($result))
+            {
+              echo '<tr>';
+              echo '<td width="100%"><a href="javascript:;"><li onclick="getCollectionDetails(this.value)" value='.$row['collection_id'].'">'.$row['collection_title'].'</li></a></td>';
+              echo '<td><a href="#" id="'.$row['collection_id'].'" class="del"><img src="http://goo.gl/audtbz" HEIGHT="15px" title="Delete Collection" alt="Delete Collection"></a></td>';
+              echo '</tr>';
+            }
+          ?>
 
-        </div>
+        </table>
+      </ul>
+
+      <div class="filtertopic">
+        <h4>Filter Topics</h4>
+        <ul id="filterlist">
+        <div id="collectionDetails"></div>
       </div>
 
-
-      <!-- Clips -->
-      <div class="col-md-4">
-        <div id="column">
-          <div id="clips">
-            <h4>Clip</h4>
-            <div id="topicDetails"></div>
-          </div>
-        </div>
-      </div>
+    </div><!-- Collection -->
 
 
-      <!-- ClipNote -->
-            
-      <!-- Required for Autosave Feature -->
+    <!-- Clips Search Area -->
+    <div class="col-md-4">
+
+      <!-- Displays All Clips -->
       <script type="text/javascript">
-      setInterval(function()
-      {
-      (function($) {
-        $.fn.autoSubmit = function(options) {
-          return $.each(this, function() {
-            // VARIABLES: Input-specific
-            var input = $(this);
-            var column = input.attr('name');
-      
-            // VARIABLES: Form-specific
-            var form = input.parents('form');
-            var method = form.attr('method');
-            var action = form.attr('action');
-
-            // VARIABLES: Where to update in database
-            var where_val = form.find('#where').val();
-            var where_col = form.find('#where').attr('name');
-      
-            // ONBLUR: Dynamic value send through Ajax
-            input.bind('blur', function(event) {
-              // Get latest value
-              var value = input.val();
-              // AJAX: Send values
-              $.ajax({
-                url: action,
-                type: method,
-                data: {
-                  val: value,
-                  col: column,
-                  w_col: where_col,
-                  w_val: where_val
-                },
-                cache: false,
-                timeout: 10000,
-                success: function(data) {
-                  // Alert if update failed
-                  if (data) {
-                    alert(data);
-                  }
-                  // Load output into a P
-                  else {
-                    $('#notice').text('Updated');
-                    $('#notice').fadeOut().fadeIn();
-                  }
-                }
-              });
-              // Prevent normal submission of form
-              return false;
-            })
-          });
-        }
-      })(jQuery);
-      
-      // JQUERY: Run .autoSubmit() on all INPUT fields within form
-      $(function(){
-        $('#ajax-form INPUT').autoSubmit();
-      });
-      },3000);
+        getTopicDetails('-2');
       </script>
 
-      <div class="col-md-6">
-        <div id="column">
-          <h4>ClipNote</h4>
-          <div id="clipDetails"></div>
-        </div>
-      </div>
+      <h1>Clips</h1>
+      <h3>all the clips you have so far</h3>
 
+      <section class="list-wrap">
+
+        <label for="search-text">Search for a Clip</label>
+        <input type="text" id="search-text" placeholder="search" class="search-box">
+        <span class="list-count"></span>
+
+        <div id="topicDetails"></div>
+
+      </section>
+
+    </div><!-- Clips Search Area -->
+
+
+    <!-- ClipNote -->
+    <div class="col-md-6">
+
+      <h1>ClipNotes</h1>
+      <h3>videos and notes</h3>
+      <div id="clipDetails"></div>
+    
+    </div><!-- ClipNote -->
+
+
+    <!-- Action Forms -->
+
+    <!-- Collection -->
+    <div class="collection-form">
+      <form name="userinfo" id="userinfo"> 
+        <table width="100%" border="0" cellpadding="4" cellspacing="0">
+          
+          <tr>
+            <td colspan="2" align="right"><a href="#" id="close">Close</a></td>
+          </tr>
+
+          <tr>
+            <td>Add Collection</td>
+            <td><input type="text" name="collection_title"></td>
+          </tr>
+
+          <tr>
+            <td align="right"></td>
+            <td><input type="button" value="Save" id="save"><input type="button" value="Cancel" id="cancel"></td>
+          </tr>
+
+        </table>
+      </form>
+    </div>
+
+
+    <!-- Topic -->
+    <div class="DIFFERENT NAME">
+      <form name="userinfo" id="newid"> 
+        <table width="100%" border="0" cellpadding="4" cellspacing="0">
+          
+          <tr>
+            <td colspan="2" align="right"><a href="#" id="close">Close</a></td>
+          </tr>
+
+          <tr>
+            <td>Add Topic</td>
+            <td><input type="text" name="collection_title"></td>
+          </tr>
+          <!--
+          <tr>
+            <td>First Name</td>
+            <td><input type="text" name="fname"></td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td><input type="text" name="lname"></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input type="text" name="email"></td>
+          </tr>
+          <tr>
+            <td>Phone Number</td>
+            <td><input type="text" name="phone"></td>
+          </tr>
+          -->
+
+          <tr>
+            <td align="right"></td>
+            <td><input type="button" value="Save" id="save"><input type="button" value="Cancel" id="cancel"></td>
+          </tr>
+
+        </table>
+      </form>
     </div>
 
   </body>

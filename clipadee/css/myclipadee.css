@@ -1,0 +1,104 @@
+/* unvisited link */
+a:link {
+
+}
+
+/* visited link */
+a:visited {
+	/* color: inherit; */
+}
+
+/* mouse over link */
+a:hover {
+	text-decoration: none;
+}
+
+/* selected link 
+a:active {
+	text-transform: bold;
+}
+*/
+
+
+li {
+	list-style-type: none;
+}
+
+
+.cfse_a {
+    color: blue;
+}
+
+.selected { 
+	font-weight: bold; 
+}
+
+
+.hidden {
+  display:none;
+}
+
+.navigation {
+    background-color: #64afe1;
+}
+
+.navigation a {
+    color: #ffffff;
+}
+
+.filtertopic {
+	padding-top: 10px;
+	margin-top: 10px;
+}
+
+#filtertopic {
+	padding-top: 10px;
+	margin-top: 10px;
+}
+
+.col-md-2 .filtertopic {
+	padding-top: 10px;
+	margin-top: 10px;
+}
+
+#col-md-2 #filtertopic {
+	padding-top: 10px;
+	margin-top: 10px;
+}
+
+
+
+
+
+
+ul#filterlist {
+  float:left;
+  width:100%;
+  margin:2em 0;/* margin between list and search */
+  padding:0;
+  position:relative;
+}
+
+
+/* on hover list background and border changes */
+ul#filterlist li:hover {
+  background-color:#f9f9f9;
+  border-color:#64afe1;
+}
+
+
+ul#filterlist li:visited
+{ 
+border-color:red;
+}
+
+
+li.current {
+border-color:red;
+}
+
+
+
+
+
+

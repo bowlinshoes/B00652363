@@ -1,32 +1,46 @@
 <?php include("include/connection.php"); ?>
 
+<!-- Updates List of Clips based on Topic Filter -->
 
-<!-- Generates Clip Filter Dropdown -->
-<form>
-    <select id ="filter" onchange="getClipDetails(this.value)" >
-        <option value=""> Select a Clip </option>
+    <ul id="list">
 
         <?php    
 
-            //get value from dropdown
-            $val = $_GET["drdnVal"];
+        //get value from dropdown
+        $val = $_GET["drdnVal"];
+        session_start(); 
 
-            $result = mysql_query("SELECT * FROM clip WHERE topic_id = '".$val."'");
+        if ($val == '-2') 
+        { 
+            $rightvar = $_SESSION['user_id'];
+            //$rightvar = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
+
+            $result = mysql_query("SELECT * FROM clip WHERE id = $rightvar ORDER BY clip_title");  
+            //$result = mysql_query("SELECT * FROM clip WHERE id = '1' ORDER BY clip_title");
 
             while ($row = mysql_fetch_array($result)) 
             {
+                echo '<a href="javascript:;"><li id="news" onclick="getClipDetails(this.value)" value='.$row['clip_id'].'">'.$row['clip_title'].'</li></a>';
+
+            }
+
+        } else 
+            {
+                //$result = mysql_query("SELECT * FROM clip WHERE topic_id = '".$val."'");
+                $result = mysql_query("SELECT * FROM clip WHERE topic_id = '".$val."' ORDER BY clip_title");
+                while ($row = mysql_fetch_array($result)) 
+                {
+                    echo '<a href="javascript:;"><li id="news" onclick="getClipDetails(this.value)" value='.$row['clip_id'].'">'.$row['clip_title'].'</li></a>';
+
+                }
+            }
+
         ?>
-    
-        <option value="<?php echo $row['clip_id'];?>"><?php echo $row['clip_title'];?></option>
 
-        <?php
-            } //Close while{} loop
-        ?>
+        <span class="empty-item">no results</span>
 
-    </select>
-</form>
-
-        
+    </ul>
+  
 <?php  
     mysql_close($connect);
 ?>

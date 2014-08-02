@@ -1,3 +1,8 @@
+<?php
+include("include/connection.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +10,9 @@
     <title>Clipadee | Clip Play Learn</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="font.css">
-    <!-- <link type="text/css" rel="stylesheet" href="css/bootstrap.css"> -->
-    <!-- <link type="text/css" rel="stylesheet" href="css/binarystrap.css"> -->
-    <link type="text/css" rel="stylesheet" href="css/bootcamp.css"><!--  code from bootstrap that is used -->
-    <link type="text/css" rel="stylesheet" href="css/index.css">
-    <link rel="icon" type="image/png" href="http://goo.gl/alB2ZQ">
+    <link type="text/css" rel="stylesheet" href="css/bootcamp.css"><!-- code from bootstrap that is used -->
+    <link type="text/css" rel="stylesheet" href="css/index.css"><!-- css only used on homepage -->
+    <link rel="icon" type="image/png" href="http://goo.gl/alB2ZQ"><!-- favicon -->
   </head>
 
   <body>
