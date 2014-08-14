@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
 	//allow enter key to trigger save
-	$("#newcollection").keypress(function(event)
+	$("#newtopic").keypress(function(event)
 	{
     if(event.keyCode == 13)
     {
@@ -10,29 +10,29 @@ $(document).ready(function()
     }
 	});
 
-	$("#save").click(function()
+	$("#save_topic").click(function()
 	{
 		ajax("save");
 	});
 
-	$("#add_collection").click(function()
+	$("#add_topic").click(function()
 	{
-		$(".collection_form").fadeIn("fast");	
+		$(".topic_form").fadeIn("fast");	
 	});
 	
-	$("#close").click(function()
+	$("#close_topic").click(function()
 	{
-		$(".collection_form").fadeOut("fast");	
+		$(".topic_form").fadeOut("fast");	
 	});
 	
-	$("#cancel").click(function()
+	$("#cancel_topic").click(function()
 	{
-		$(".collection_form").fadeOut("fast");	
+		$(".topic_form").fadeOut("fast");	
 	});
 	
-	$(".del").live("click",function()
+	$(".del_topic").live("click",function()
 	{
-		if(confirm("Do you really want to delete this collection?"))
+		if(confirm("Do you really want to delete this topic?"))
 		{
 			ajax("delete",$(this).attr("id"));
 		}
@@ -42,7 +42,7 @@ $(document).ready(function()
 	{
 		if(action =="save")
 		{//delete this if breaks
-			data = $("#collection_info").serialize()+"&action="+action;
+			data = $("#topic_info").serialize()+"&action="+action;
 		}//delete this if breaks
 		else if(action == "delete")
 			{
@@ -52,7 +52,7 @@ $(document).ready(function()
 		$.ajax(
 		{
 			type: "POST", 
-			url: "collection.php", 
+			url: "topic.php", 
 			data : data,
 			dataType: "json",
 			success: function(response)
@@ -61,13 +61,13 @@ $(document).ready(function()
 				{
 					if(action == "save")
 					{
-						$(".collection_form").fadeOut("fast",function(){
+						$(".topic_form").fadeOut("fast",function(){
 							$(".table-list").append("<tr><td>"+response.fname+"</td><td>"+response.lname+"</td><td>"+response.email+"</td><td>"+response.phone+"</td><td><a href='#' id='"+response.row_id+"' class='del'>Delete</a></a></td></tr>");	
 							$(".table-list tr:last").effect("highlight", {
 								color: '#4BADF5'
 							}, 1000);
 						});	
-						$(".collection_form input[type='text']").each(function(){
+						$(".topic_form input[type='text']").each(function(){
 							$(this).val("");
 						});		
 					}else if(action == "delete")

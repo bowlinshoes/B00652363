@@ -16,9 +16,9 @@ include("include/connection.php");
     <!-- <link type="text/css" rel="stylesheet" href="css/bootcamp.css"> -->
     <link type="text/css" rel="stylesheet" href="css/bootcamp.css"><!-- code from bootstrap that is used -->
     <link type="text/css" rel="stylesheet" href="css/index.css"><!-- top navigation bar -->
-    <link type="text/css" rel="stylesheet" href="css/clipadee.css"> 
+    <link type="text/css" rel="stylesheet" href="css/clipadee.css">
     <link type="text/css" rel="stylesheet" href="css/backgrounddrain.css">
-    <link type="text/css" rel="stylesheet" href="css/filters.css">
+    <link type="text/css" rel="stylesheet" href="css/css.css">
     <link type="text/css" rel="stylesheet" href="css/myclipadee.css">
     <link rel="stylesheet" rel="stylesheet" href="css/style.css"><!-- style for add / delete button -->
 
@@ -53,7 +53,8 @@ include("include/connection.php");
     <?php include("include/navigation.php"); ?>
 
     <!-- Displays Username if Signed In -->
-    <?php include("include/signedin.php"); ?>
+    <?php include("signedin/lecturer.php"); ?>
+
 
     <!-- Collection -->
     <div class="col-md-2">
@@ -68,43 +69,16 @@ include("include/connection.php");
       <ul id="filterlist">
         <table>
 
-          <!-- university modules -->      
           <?php
             $rightvar = $_SESSION['user_id'];
-            $module = mysql_query("SELECT module_one, module_two FROM person WHERE id = '$rightvar'");
-
-            //get value of module code
-            if (mysql_num_rows($module)) 
-            {
-                $value = mysql_fetch_assoc($module);
-                $code1 = $value['module_one'];
-                $code2 = $value['module_two'];
-
-            }
-
-            $result = mysql_query("SELECT * FROM uni_collection WHERE module_code = '$code1' OR module_code = '$code2'"); 
-
-            while ($row = mysql_fetch_array($result))
-            {
-              echo '<tr>';
-              echo '<td width="500px"><a href="javascript:;"><li class="uni" onclick="getUniCollectionDetails(this.value)" value='.$row['module_id'].'">'.$row['module_title'].'</li></a></td>';
-              //echo '<td><a href="#" id="'.$row['collection_id'].'" class="del"><img src="http://goo.gl/audtbz" HEIGHT="15px" title="Delete Collection" alt="Delete Collection"></a></td>';
-              echo '</tr>';
-            }
-
-          ?>
-
-          <!-- end-user collection --> 
-          <?php
-            $rightvar = $_SESSION['user_id'];
-            $result = mysql_query("SELECT * FROM collection WHERE id = $rightvar"); 
+            $result = mysql_query("SELECT * FROM uni_module WHERE lecturer_id = $rightvar"); 
             //$result= mysql_query("SELECT * FROM collection");
                       
             while ($row = mysql_fetch_array($result))
             {
               echo '<tr>';
-              echo '<td width="100%"><a href="javascript:;"><li class="user" onclick="getCollectionDetails(this.value)" value='.$row['collection_id'].'">'.$row['collection_title'].'</li></a></td>';
-              echo '<td><a href="#" id="'.$row['collection_id'].'" class="del"><img src="http://goo.gl/audtbz" HEIGHT="15px" title="Delete Collection" alt="Delete Collection"></a></td>';
+              echo '<td width="500px"><a href="javascript:;"><li onclick="getLecModuleDetails(this.value)" value='.$row['module_id'].'">'.$row['module_title'].'</li></a></td>';
+              //echo '<td><a href="#" id="'.$row['collection_id'].'" class="del"><img src="http://goo.gl/audtbz" HEIGHT="15px" title="Delete Collection" alt="Delete Collection"></a></td>';
               echo '</tr>';
             }
           ?>
@@ -173,7 +147,7 @@ include("include/connection.php");
 
           <tr>
             <td>Add Collection</td>
-            <td><input id="newcollection" type="text" name="collection_title"></td>
+            <td><input type="text" name="collection_title"></td>
           </tr>
 
           <tr>
@@ -197,7 +171,7 @@ include("include/connection.php");
 
           <tr>
             <td>Add Topic</td>
-            <td><input id="newtopic" type="text" name="topic_title"></td>
+            <td><input type="text" name="topic_title"></td>
           </tr>
           <!--
           <tr>

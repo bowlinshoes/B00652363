@@ -1,12 +1,11 @@
 <?php
 
-  include("include/connection.php");
-
+  include("../include/connection.php");
 
   // DATABASE: Get current row
   
   //get value from dropdown
-  $val = $_GET["drdnVal"];
+  $val = $_GET["clipID"];
 
   $result = mysql_query("SELECT * FROM clip WHERE clip_id = $val");
   $row = mysql_fetch_assoc($result);
@@ -31,7 +30,7 @@
 ?>
 
 
-<form id="ajax-form" class="autosubmit" method="POST" action="./autosave.php">
+<form id="ajax-form" class="autosubmit" method="POST" action="./php/userautosave.php">
 
     <br/>
     Title: <br/><input style="width:640px;" name="clip_title" value="<?php echo $row['clip_title'] ?>" /><br/>

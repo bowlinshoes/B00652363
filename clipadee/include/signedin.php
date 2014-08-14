@@ -12,19 +12,11 @@
         $result = mysql_query("SELECT * FROM $table WHERE id = $rightvar") or die(mysql_error());  
             
         $data = mysql_fetch_array($result);  
-
+        $username = $data['username'];
         $firstname = $data['firstname'];
         $lastname = $data['lastname'];
-        $userid = $data['id'];
-        $username = $data['username'];
 
-        /*
-        echo "<font color = #464646> Signed In As: $username </font>" 
-        . '<a  href="include/signout.php"><input type="button"  value="Sign Out"/></a>';
-        */
-
-        echo "Signed in as: ";
-        echo $username;
+        echo "Signed in as: " . "<b>" . $firstname . " " . $lastname . "</b>";
 
       }
     ?>

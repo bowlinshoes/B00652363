@@ -2,7 +2,7 @@
     {
 
       var jobCount = $('#list .in').length;
-      $('.list-count').text(jobCount + ' items');
+      $('.list-count').text(jobCount + ' clips');
         
       
       $("#search-text").keyup(function () {
@@ -41,7 +41,7 @@
         
       
           var jobCount = $('#list .in').length;
-        $('.list-count').text(jobCount + ' items');
+        $('.list-count').text(jobCount + ' clips');
         
         //shows empty state text when no jobs found
         if(jobCount == '0') {

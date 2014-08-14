@@ -1,6 +1,8 @@
 <?php
 
-	include("include/connection.php");
+	//include("include/connection.php");
+	include("../include/connection.php");
+
 
 	//clean data before use
 	function clean($value)
