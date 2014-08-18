@@ -25,7 +25,7 @@
     
     } else 
       {
-        $result = mysql_query("SELECT * FROM uni_topic WHERE module_id = '".$val."' ORDER BY topic_title");
+        $result = mysql_query("SELECT * FROM uni_topic WHERE collection_id = '".$val."' ORDER BY topic_title");
 
           while ($row = mysql_fetch_array($result)) 
           {
@@ -47,7 +47,7 @@
             //if user has lecturer status they can delete topics
             if ($status == 1) 
             {
-              echo '<td><a href="#" id="'.$row['topic_id'].'" class="del_topic"><img src="http://goo.gl/audtbz" HEIGHT="15px" title="Delete Topic" alt="Delete Topic"></a></td>';
+              echo '<td><a href="#" id="'.$row['topic_id'].'" class="del_topic"><img src="images/delete.png" HEIGHT="15px" title="Delete Topic" alt="Delete Topic"></a></td>';
             }
 
             echo '</tr>';

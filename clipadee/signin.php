@@ -17,7 +17,7 @@
     <!-- Header -->
     <div class="header">
       <div class="clipadee-logo">
-        <a href="index.php"><img src="http://goo.gl/IdMSPm" HEIGHT="30" alt="Clipadee logo"></a>
+        <a href="index.php"><img src="images/clipadee-logo.png" HEIGHT="30" alt="Clipadee logo"></a>
       </div>
     </div>
 

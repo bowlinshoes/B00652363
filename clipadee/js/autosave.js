@@ -7,11 +7,11 @@ setInterval(function()
       return $.each(this, function() 
       {
         // VARIABLES: Input-specific
-        var input = $(this);
-        var column = input.attr('name');
+        var textarea = $(this);
+        var column = textarea.attr('name');
 
         // VARIABLES: Form-specific
-        var form = input.parents('form');
+        var form = textarea.parents('form');
         var method = form.attr('method');
         var action = form.attr('action');
 
@@ -20,10 +20,10 @@ setInterval(function()
         var where_col = form.find('#where').attr('name');
 
         // ONBLUR: Dynamic value send through Ajax
-        input.bind('blur', function(event) 
+        textarea.bind('blur', function(event) 
         {
           // Get latest value
-          var value = input.val();
+          var value = textarea.val();
           
           // AJAX: Send values
           $.ajax(
@@ -64,7 +64,7 @@ setInterval(function()
   // JQUERY: Run .autoSubmit() on all INPUT fields within form
   $(function()
   {
-    $('#ajax-form INPUT').autoSubmit();
+    $('#ajax-form TEXTAREA').autoSubmit();
   });
 
 },3000);    

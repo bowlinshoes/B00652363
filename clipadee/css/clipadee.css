@@ -10,7 +10,7 @@ body {
 
 /* layout for signed-in user */
 .signedin {
-    background-color: yellow;
+    background-color: #efefef;
     display: block;
     width: 100%;
     line-height: 30px;
@@ -115,15 +115,13 @@ body, html {
 /* seperation lines for columns */
 .col-md-2, .col-md-3, .col-md-4 {
     margin: 10px 0px;
-    height: 600px;
+    height: 980px;
     border-right:1px solid #64afe1
 }
 
 .col-md-6 {
     margin: 10px 0px;
     height: 600px;
-}
-
 
 .verticalLine {
     border-left: thick solid #ff0000;

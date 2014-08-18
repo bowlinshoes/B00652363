@@ -97,6 +97,29 @@
         xmlHttp.send();
   }
 
+  //function to filter collection to display topics
+  function getCollectionTopic(str) 
+  {
+    if (str == "") 
+    {
+      document.getElementById("collectionTopic").innerHTML = "";
+      return;
+    }
+    if (window.XMLHttpRequest) 
+    {
+      xmlHttp = new XMLHttpRequest();
+    }
+      xmlHttp.onreadystatechange = function () 
+      {
+        if (xmlHttp.readyState == 4) 
+        {
+                
+          document.getElementById("collectionTopic").innerHTML = xmlHttp.responseText;
+        }
+      }
+        xmlHttp.open("GET", "topic.php?collectionID=" + str, true);
+        xmlHttp.send();
+  }
 
   //function to filter topics to display clips
   function getTopicDetails(str) 

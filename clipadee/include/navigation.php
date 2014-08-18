@@ -16,7 +16,7 @@
             <ul class="nav nav-pills pull-right">
               <li><a href="myclipadee.php">My Clipadee</a></li>
               <li><a href="include/signout.php">Sign Out</a></li>
-              <li><a href="include/signout.php">Help</a></li>
+              <li><a href="mailto:clipadee@gmail.com">Help</a></li>
             </ul>
           </div>
         </div>
@@ -36,7 +36,7 @@
             <ul class="nav nav-pills pull-right">
               <li><a href="signin.php">Sign In</a></li>
               <li><a href="signup.html">Sign Up</a></li>
-              <li><a href="include/signout.php">Help</a></li>
+              <li><a href="mailto:clipadee@gmail.com">Help</a></li>
             </ul>
           </div>
         </div>

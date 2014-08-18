@@ -86,3 +86,30 @@ input[type='button']{
 	border: 1px solid #C5D7E2;
 }
 
+.clip_form{
+	background: #EDF2F6;
+	width: 350px;
+	padding: 10px;
+	border: 5px solid #C5D7E2;
+	box-shadow: 3px 3px 5px #888;
+	position: absolute;
+	top: 25%;
+	left: 35%;
+	display: none;
+	border-radius: 5px;
+	z-index: 100;/* sets where window will appear */
+}
+.clip_form input[type='text']{
+	border: 1px solid #BBBBBB;
+	box-shadow: 2px 2px 4px #C5D7E2 inset;
+	height: 25px;
+	width: 200px;
+}
+.clip_form input[type='text']:focus{
+	border: 1px solid #C5D7E2;
+}
+
+
+#fixed {
+    resize: none;
+}

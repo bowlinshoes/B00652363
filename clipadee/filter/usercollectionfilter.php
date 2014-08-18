@@ -26,7 +26,7 @@
         {
           echo '<tr>';
           echo '<td width="100%"><a href="javascript:;"><li class="user" onclick="getTopicDetails(this.value)" value='.$row['topic_id'].'">'.$row['topic_title'].'</li></a></td>';
-          echo '<td><a href="#" id="'.$row['topic_id'].'" class="del_topic"><img src="http://goo.gl/audtbz" HEIGHT="15px" title="Delete Topic" alt="Delete Topic"></a></td>';
+          echo '<td><a href="#" id="'.$row['topic_id'].'" class="del_topic"><img src="images/delete.png" HEIGHT="15px" title="Delete Topic" alt="Delete Topic"></a></td>';
           echo '</tr>';
         }
       }

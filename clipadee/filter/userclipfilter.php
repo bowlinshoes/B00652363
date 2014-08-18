@@ -33,9 +33,9 @@
 <form id="ajax-form" class="autosubmit" method="POST" action="./php/userautosave.php">
 
     <br/>
-    Title: <br/><input style="width:640px;" name="clip_title" value="<?php echo $row['clip_title'] ?>" /><br/>
-    URL: <br/><input style="width:640px;" name="clip_url" value="<?php echo $row['clip_url'] ?>" /><br/>
-    ClipNote: <br/><input style="width:640px;" name="clip_note" value="<?php echo $row['clip_note'] ?>" /><br/>
+    Title: <br/><textarea rows="1" style="width:640px" name="clip_title" id="fixed"><?php echo $row['clip_title'] ?></textarea><br/>
+    URL: <br/><textarea rows="1" style="width:640px" name="clip_url" id="fixed"><?php echo $row['clip_url'] ?></textarea><br/>
+    ClipNote: <br/><textarea style="width:640px; height:200px" name="clip_note" id="tinyeditor"><?php echo $row['clip_note'] ?></textarea><br/>
 
     <input id="where" type="hidden" name="clip_id" value="<?php echo $row['clip_id'] ?>" />
 
