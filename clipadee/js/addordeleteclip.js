@@ -1,13 +1,23 @@
 $(document).ready(function()
 {
-	//allow enter key to trigger save
+	//allow enter key to trigger save in title field
 	$("#newclip").keypress(function(event)
 	{
-    if(event.keyCode == 13)
-    {
-    	event.preventDefault();
-    	ajax("save");
-    }
+	    if(event.keyCode == 13)
+	    {
+	    	event.preventDefault();
+	    	ajax("save");
+	    }
+	});
+
+	//allow enter key to trigger in url field
+	$("#newclipurl").keypress(function(event)
+	{
+	    if(event.keyCode == 13)
+	    {
+	    	event.preventDefault();
+	    	ajax("save");
+	    }
 	});
 
 	$("#save_clip").click(function()
@@ -35,6 +45,7 @@ $(document).ready(function()
 		if(confirm("Do you really want to delete this clip?"))
 		{
 			ajax("delete",$(this).attr("id"));
+			location.reload();
 		}
 	});
 
@@ -52,7 +63,7 @@ $(document).ready(function()
 		$.ajax(
 		{
 			type: "POST", 
-			url: "clip.php", 
+			url: "php/addordeleteclip.php", 
 			data : data,
 			dataType: "json",
 			success: function(response)
@@ -69,6 +80,7 @@ $(document).ready(function()
 						});	
 						$(".clip_form input[type='text']").each(function(){
 							$(this).val("");
+							location.reload();
 						});		
 					}else if(action == "delete")
 						{
@@ -85,11 +97,7 @@ $(document).ready(function()
 						alert("unexpected error occured, Please check your database connection");
 					}
 			},
-			
-				error: function(res)
-				{
-					alert("Unexpected error! Try again.");
-				}
+
 		});
 	}
 });

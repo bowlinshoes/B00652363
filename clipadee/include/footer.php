@@ -1,1 +1,0 @@
-<p>&copy; <?php echo date("Y"); ?> Clipadee. All rights reserved.</p>

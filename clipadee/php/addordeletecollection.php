@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
-include("include/connection.php");
+include("../include/connection.php");
+
 if(isset($_POST) && count($_POST)){
 	//$fname = mysql_real_escape_string($_POST['fname']);
 	$collection_title = mysql_real_escape_string($_POST['collection_title']);

@@ -13,7 +13,7 @@
 	{
 		//prepare form variables for database
 		foreach ($_POST as $column => $value)
-				${$column} = clean($value);
+							${$column} = clean($value);
 
 		//perform mysql update
 		$result = mysql_query("UPDATE uni_note SET ".$col."='".$val."'

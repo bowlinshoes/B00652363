@@ -2,7 +2,6 @@
 include("include/connection.php");
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +19,7 @@ include("include/connection.php");
     <!-- Header -->
     <div class="header">
       <div class="clipadee-logo">
-        <a href="index.php"><img src="http://goo.gl/iKq8xA" HEIGHT="30" alt="Clipadee logo"></a>
+        <a href="index.php"><img src="images/clipadee-home.png" HEIGHT="30" alt="Clipadee logo"></a>
       </div>
     </div>
 
@@ -36,47 +35,6 @@ include("include/connection.php");
 			</div>
 		</div>
 
-		<!-- User/Collection Profiles -->
-    <div class="collections">
-      <div class="container">
-        <h2>Trending Topics</h2>
-        <p>Looking to learn something new? Here are some of the topics that are currently trending..</p>
-        		
-        <div class="row">
-          <div class="col-md-4">
-           	<div class="thumbnail">
-           		<img src="images/home/software_dev.jpg"><!-- Software Development -->
-              <!-- <h3><span>Software Development</span></h3> -->
-            </div>
-
-						<div class="thumbnail">
-           		<img src="images/home/art.jpg"><!-- Art -->
-              <!-- <h3><span>Art</span></h3> -->
-            </div>
-          </div>
-           
-          <div class="col-md-4">
-            <div class="thumbnail">
-           	  <img src="images/home/economics.jpg"><!-- Economics -->
-            </div>
-
-            <div class="thumbnail">
-              <img src="images/home/law.jpg"><!-- Law -->
-            </div>
-          </div>
-           
-          <div class="col-md-4">
-            <div class="thumbnail">
-              <img src="images/home/startups.jpg"><!-- Start-Ups -->
-            </div>
-
-						<div class="thumbnail">
-              <img src="images/home/languages.jpg"><!-- Languages -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> 
 
 		<!-- Additional Information -->
 		<div class="learn-more">
@@ -104,13 +62,6 @@ include("include/connection.php");
         </div>
       </div>
     </div>
-
-    <!-- Footer 
-    <div class="learn-more">
-      <?php include("include/footer.php"); ?>
-    </div>
-    -->
-    
 
   </body>
 

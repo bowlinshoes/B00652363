@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
 	//allow enter key to trigger save
-	$("#newtopic").keypress(function(event)
+	$("#newcollection").keypress(function(event)
 	{
     if(event.keyCode == 13)
     {
@@ -10,31 +10,32 @@ $(document).ready(function()
     }
 	});
 
-	$("#save_topic").click(function()
+	$("#save").click(function()
 	{
 		ajax("save");
 	});
 
-	$("#add_topic").click(function()
+	$("#add_collection").click(function()
 	{
-		$(".topic_form").fadeIn("fast");	
+		$(".collection_form").fadeIn("fast");	
 	});
 	
-	$("#close_topic").click(function()
+	$("#close").click(function()
 	{
-		$(".topic_form").fadeOut("fast");	
+		$(".collection_form").fadeOut("fast");	
 	});
 	
-	$("#cancel_topic").click(function()
+	$("#cancel").click(function()
 	{
-		$(".topic_form").fadeOut("fast");	
+		$(".collection_form").fadeOut("fast");	
 	});
 	
-	$(".del_topic").live("click",function()
+	$(".del").live("click",function()
 	{
-		if(confirm("Do you really want to delete this topic?"))
+		if(confirm("Do you really want to delete this collection?"))
 		{
 			ajax("delete",$(this).attr("id"));
+			location.reload();
 		}
 	});
 
@@ -42,7 +43,7 @@ $(document).ready(function()
 	{
 		if(action =="save")
 		{//delete this if breaks
-			data = $("#topic_info").serialize()+"&action="+action;
+			data = $("#collection_info").serialize()+"&action="+action;
 		}//delete this if breaks
 		else if(action == "delete")
 			{
@@ -52,7 +53,7 @@ $(document).ready(function()
 		$.ajax(
 		{
 			type: "POST", 
-			url: "topic.php", 
+			url: "php/addordeletecollection.php", 
 			data : data,
 			dataType: "json",
 			success: function(response)
@@ -61,14 +62,15 @@ $(document).ready(function()
 				{
 					if(action == "save")
 					{
-						$(".topic_form").fadeOut("fast",function(){
+						$(".collection_form").fadeOut("fast",function(){
 							$(".table-list").append("<tr><td>"+response.fname+"</td><td>"+response.lname+"</td><td>"+response.email+"</td><td>"+response.phone+"</td><td><a href='#' id='"+response.row_id+"' class='del'>Delete</a></a></td></tr>");	
 							$(".table-list tr:last").effect("highlight", {
 								color: '#4BADF5'
 							}, 1000);
 						});	
-						$(".topic_form input[type='text']").each(function(){
+						$(".collection_form input[type='text']").each(function(){
 							$(this).val("");
+							location.reload();
 						});		
 					}else if(action == "delete")
 						{
@@ -82,14 +84,10 @@ $(document).ready(function()
 						}
 				}else
 					{
-						alert("unexpected error occured, Please check your database connection");
+						alert("Unexpected error! Please check your database connection.");
 					}
 			},
 			
-				error: function(res)
-				{
-					alert("Unexpected error! Try again.");
-				}
 		});
 	}
 });

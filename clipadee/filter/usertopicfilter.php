@@ -20,8 +20,12 @@
 
         while ($row = mysql_fetch_array($result)) 
         {
-            echo '<a href="javascript:;"><li id="news" onclick="getClipDetails(this.value)" value='.$row['clip_id'].'">'.$row['clip_title'].'</li></a>';
-
+              echo '<table>';
+              echo '<tr>';
+              echo '<td width="100%"><a href="javascript:;"><li id="news" onclick="getClipDetails(this.value)" value='.$row['clip_id'].'">'.$row['clip_title'].'</li></a></td>';
+              echo '<td><li><a href="#" id="'.$row['clip_id'].'" class="del_clip"><img src="images/delete.png" HEIGHT="15px" title="Delete Clip" alt="Delete Clip"></li></a></td>';
+              echo '</tr>';
+              echo '</table>';
         }
 
     } else 

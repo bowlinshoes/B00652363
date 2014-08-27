@@ -1,8 +1,6 @@
 <?php
 
-	//include("include/connection.php");
 	include("../include/connection.php");
-
 
 	//clean data before use
 	function clean($value)
@@ -15,12 +13,12 @@
 	{
 		//prepare form variables for database
 		foreach ($_POST as $column => $value)
-				${$column} = clean($value);
+							${$column} = clean($value);
 
 		//perform mysql update
 		$result = mysql_query("UPDATE uni_clip SET ".$col."='".$val."'
 								WHERE ".$w_col."='".$w_val."'")
-									or die ('Unable to update row.');
+									or die ('Unable to update University Clip.');
 	
 	}
 

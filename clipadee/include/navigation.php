@@ -2,15 +2,16 @@
   ob_start();
   session_start();
 
+  //if user is signed in display signed in navigation
   if (isset($_SESSION['user_id'])&&!empty($_SESSION['user_id']))
   {
 ?>
-    <!-- Navigation -->
+    <!-- Signed In Navigation -->
         <div class="navigation">
           <div class="container">
             <ul class="nav nav-pills pull-left">
-              <li><a href="#">About</a></li>
-              <li><a href="#">News</a></li>
+              <!-- <li><a href="#">About</a></li> -->
+              <!-- <li><a href="#">News</a></li> -->
             </ul>
 
             <ul class="nav nav-pills pull-right">
@@ -29,13 +30,13 @@
         <div class="navigation">
           <div class="container">
             <ul class="nav nav-pills pull-left">
-              <li><a href="#">About</a></li>
-              <li><a href="#">News</a></li>
+              <!-- <li><a href="#">About</a></li> -->
+              <!-- <li><a href="#">News</a></li> -->
             </ul>
 
             <ul class="nav nav-pills pull-right">
               <li><a href="signin.php">Sign In</a></li>
-              <li><a href="signup.html">Sign Up</a></li>
+              <!-- <li><a href="signup.html">Sign Up</a></li> -->
               <li><a href="mailto:clipadee@gmail.com">Help</a></li>
             </ul>
           </div>

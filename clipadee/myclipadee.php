@@ -18,18 +18,20 @@ include("include/connection.php");
     <link type="text/css" rel="stylesheet" href="css/clipadee.css">
     <link type="text/css" rel="stylesheet" href="css/filters.css">
     <link type="text/css" rel="stylesheet" href="css/myclipadee.css">
-    <link rel="stylesheet" rel="stylesheet" href="css/style.css"><!-- style for add / delete button -->
+    <link type="text/css" rel="stylesheet" href="css/style.css"><!-- style for add / delete button -->
 
-    <!-- java scripts -->
+    <!-- javascript libraries -->
     <script src="js/jquery.js"></script><!-- jQuery JavaScript Library v1.5 -->
-    <script src="js/collection.js"></script><!-- add / delete / edit collection -->
-    <script src="js/topic.js"></script><!-- add / delete / edit topic -->
-    <script src="js/clip.js"></script><!-- add / delete / edit topic -->
+    <script src="js/jquery-ui-1.8.17.custom.min.js"></script><!-- jQuery JavaScript Library v1.5 -->
+
+    <!-- javascript files -->
+    <script src="js/addordeletecollection.js"></script><!-- add / delete / edit collection -->
+    <script src="js/addordeletetopic.js"></script><!-- add / delete / edit topic -->
+    <script src="js/addordeleteclip.js"></script><!-- add / delete / edit topic -->
+
     <script src="js/filter.js"></script><!-- collection / topic / clip filters -->
     <script src="js/search.js"></script><!-- search through clips function -->
     <script src="js/autosave.js"></script><!-- search through clips function -->
-    <script src="js/jquery-ui-1.8.17.custom.min.js"></script><!-- jQuery JavaScript Library v1.5 -->
-    <script src="js/links.js"></script>
     
     <!-- google hosted jquery library-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
@@ -54,6 +56,14 @@ include("include/connection.php");
 
     <!-- Displays Username if Signed In -->
     <?php include("include/signedin.php");?>
+
+    <!-- If user not signed in redirect them to sign in page -->
+    <?php
+      if(!isset($_SESSION['user_id']))
+      { //if login in session is not set
+        header("Location: signin.php");
+      }
+    ?>
 
     <!-- Check to see if User is Lecturer or Student -->
     <?php
@@ -196,12 +206,9 @@ include("include/connection.php");
     <div class="collection_form">
       <form name="collection_info" id="collection_info"> 
         <table width="100%" border="0" cellpadding="4" cellspacing="0">
-          
-          <tr>
-            <td colspan="2" align="right"><a href="#" id="close">Close</a></td>
-          </tr>
 
           <tr>
+            <br>
             <td>Add Collection</td>
             <td><input id="newcollection" type="text" name="collection_title"></td>
           </tr>
@@ -277,13 +284,13 @@ include("include/connection.php");
           </tr> -->
 
           <tr>
-            <td>Add Clip</td>
+            <td>Clip Title</td>
             <td><input id="newclip" type="text" name="clip_title"></td>
           </tr>
 
           <tr>
-            <td>YouTube URL</td>
-            <td><input id="newclip" type="text" name="clip_url"></td>
+            <td>Clip URL</td>
+            <td><input id="newclipurl" type="text" name="clip_url"></td>
           </tr>
 
           <tr>

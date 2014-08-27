@@ -30,7 +30,30 @@
                 $result = mysql_query("SELECT * FROM uni_clip WHERE topic_id = '".$val."' ORDER BY clip_title");
                 while ($row = mysql_fetch_array($result)) 
                 {
-                    echo '<a href="javascript:;"><li id="news" onclick="getUniClipDetails(this.value)" value='.$row['clip_id'].'">'.$row['clip_title'].'</li></a>';
+                    echo '<table>';
+                    echo '<tr>';
+                    echo '<td width="500px"><a href="javascript:;"><li id="news" onclick="getUniClipDetails(this.value)" value='.$row['clip_id'].'">'.$row['clip_title'].'</li></a></td>';
+
+
+                    $rightvar = $_SESSION['user_id'];
+                    $getstatus = mysql_query("SELECT lecturer FROM person WHERE id = '$rightvar'");
+
+                    //get value of module code
+                    if (mysql_num_rows($getstatus)) 
+                    {
+                        $value = mysql_fetch_assoc($getstatus);
+                        $status = $value['lecturer'];
+
+                    }
+
+                    //if user has lecturer status they can delete topics
+                    if ($status == 1) 
+                    {
+                      echo '<td><a href="#" id="'.$row['clip_id'].'" class="del_clip"><img src="images/delete.png" HEIGHT="15px" title="Delete Clip" alt="Delete Clip"></a></td>';
+                    }
+
+                    echo '</tr>';
+                    echo '</table>';
 
                 }
             }

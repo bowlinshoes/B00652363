@@ -84,13 +84,14 @@
 
 /* Styling for Additional Panels */
 .learn-more {
-  	background-color: #f7f7f7;   
+  	background-color: #efefef;   
 }
 
 .learn-more h3 {
   font-family: 'Helvetica', sans-serif;
   font-size: 18px;
   font-weight: bold;
+  color: #64afe1;
 }
 
 .learn-more a {
